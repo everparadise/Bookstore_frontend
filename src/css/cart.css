@@ -1,0 +1,91 @@
+.deleteButton{
+    background-color: rgb(255, 0, 0);
+    color: white;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-family: 华文楷体, serif;
+    height: 35px;
+    margin: auto;
+    margin-left: 0;
+    padding: 0 10px;
+    line-height: normal;
+}
+.deleteButton:hover{
+    background-color: rgb(235, 0, 0);
+
+}
+.cartListItem{
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 15fr 10fr 5fr 6fr;
+
+    border-bottom: solid rgb(240, 240, 240) 1px;
+}
+.cartHeader{
+    display: grid;
+    grid-template-columns: 1fr 1fr 15fr 10fr 5fr 6fr;
+}
+.cartItem{
+    margin: 0 auto;
+    width: 90%;
+}
+.namelink{
+    margin-left: 20px;
+    color: rgb(80, 80, 80);
+}
+.namelink:hover{
+    transform: none;
+    color: rgb(20, 20, 20);
+    transition: all 0.2s ease-in;
+}
+.detailSpan{
+    cursor: pointer;
+}
+.detailSpan:hover{
+    color: #00b4ff;
+}
+.detailPicContainer{
+    display: inline-block;
+    height: 160px;
+    float: left;
+    margin-right: 20px;
+}
+.detailPic{
+    max-height: 100%;
+}
+.cartDetail{
+    height: 200px;
+    padding: 20px;
+}
+.purchaseNow{
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    border: solid 1px rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.purchaseNow:hover{
+    box-shadow: 5px 5px 10px rgb(60, 60, 60);
+    transition: all 0.2s ease-in;
+}
+.backToMainInCart{
+    height: auto;
+    padding: 5px;
+    border: solid 1px rgb(0 , 0, 127);
+    color: rgb(0, 0, 127);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.listHeader{
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+.marginTop{
+    margin-top: 40px;
+}

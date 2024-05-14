@@ -1,0 +1,18 @@
+.orderItemGrid{
+    height: 80px;
+    line-height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 5fr 5fr 8fr 8fr;
+    border-bottom: solid 1px rgb(240, 240, 240);
+}
+.orderHeaderGrid{
+    display: grid;
+    grid-template-columns: 1fr 5fr 5fr 8fr 8fr;
+}
+.orderItemFont{
+    color: rgb(100, 100, 100);
+    font-size: 14px;
+}
+.orderSpacer{
+    margin-bottom: 20px;
+}

@@ -1,0 +1,48 @@
+.p24{
+    font-size: 24px;
+}
+.stress{
+    font-weight: bolder;
+}
+.key{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(22, 22, 22);
+
+}
+.val{
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(64, 64, 64);
+    text-overflow: ellipsis;
+}
+.title{
+    color: rgb(77, 77, 77);
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 24px;
+}
+.modalTitle{
+    margin: 10px 2px 5px 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.spacerLine{
+    margin-bottom: 24px;
+}
+.comment{
+    max-height: 80%;
+    max-width: 60%;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(64, 64, 64);
+    overflow:hidden;
+}
+.commentFont{
+    text-overflow: ellipsis;
+    max-height: 100%;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    overflow: hidden;
+}

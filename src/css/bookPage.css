@@ -1,0 +1,73 @@
+.bookGrid{
+    display: grid;
+    height: 100%;
+    grid-template-rows: 4fr 1fr;
+}
+.grid2{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: center;
+}
+.grid1{
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    padding: 48px 0 0 48px;
+}
+.addCart{
+    width: 150px;
+    height: 50px;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.addCart:hover{
+    transform: scale(1.03);
+    box-shadow: 5px 5px 10px rgb(100, 100, 100);
+    transition: all 0.2s ease-in;
+}
+
+.modalGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.submit{
+    height: 40px;
+    width: 100px;
+    background-color: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+.cancel{
+    height: 40px;
+    width: 100px;
+    background-color: rgb(255, 255, 255);
+    border: solid 1px rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    border-radius: 10px;
+}
+
+.buyNow{
+    width: 150px;
+    height: 50px;
+    border: solid 1px rgb(255, 0, 0);
+    color: rgb(255, 0, 0);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.buyNow:hover{
+    transform: scale(1.03);
+    box-shadow: 5px 5px 10px rgb(100, 100, 100);
+    transition: all 0.2s ease-in;
+}
+.bookPicContainer{
+    padding-right: 48px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.bookComment{
+    overflow:hidden;
+    max-height: 60vh;
+}

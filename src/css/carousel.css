@@ -1,0 +1,80 @@
+.carouselButton{
+    height: 50px;
+    width: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+}
+.carouselButton:hover{
+    transform: scale(1.02) translateY(-50%);
+    transition: transform 0.2s ease-in;
+}
+.buttonLeft{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+.buttonRight{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+}
+.carouselPics{
+    width: 530px; /* 轮播项宽度 */
+    height: 400px; /* 轮播项高度 */
+    display: inline-block;
+    cursor: pointer;
+}
+.carouselPics:hover{
+    transform: scale(1.02);
+    transition: transform, 0.4s, ease-in;
+}
+.empty-placeholder{
+    width: 530px; /* 轮播项宽度 */
+    height: 400px; /* 轮播项高度 */
+    display: inline-block; /* 使用 flex 布局 */
+
+}
+.carouselContainer{
+    height: 400px;
+    width: 90%;
+    backdrop-filter: blur(3px);
+    position: relative;
+    overflow: hidden;
+}
+.carouselPicContainer{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: 400px;
+    width: 550px;
+    white-space: nowrap;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.dot{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 16px;
+    background-color: rgba(222, 222, 222, 0.6);
+}
+.dotactive{
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease-in;
+}
+.dotsContainer{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 30px;
+}

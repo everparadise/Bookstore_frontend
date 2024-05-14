@@ -1,0 +1,73 @@
+.bookListContainer{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    grid-row-gap: 10px;
+
+    width: 100%;
+}
+.bookcardsLink{
+    background-image: linear-gradient(to bottom right ,#e0ffff, #ffffff);
+    border-radius: 10px;
+    height: 300px;
+    border: solid 1px rgba(0, 0, 0, 0.5);
+    max-Width: 220px;
+    padding: 20px 20px 10px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    cursor: default;
+}
+.bookcardsLink:hover{
+    transform: scale(1.02);
+    box-shadow: 2px 2px 2px 2px rgba(33, 33, 33, 0.8);
+    transition: all 0.2s ease-in;
+}
+.bookPic{
+    max-width: 100%;
+}
+.bookName{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+}
+.bookLighter{
+    font-weight: 100;
+    color: grey;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
+}
+.bookControlContainer{
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.purchaseButton{
+    width: auto;
+    padding: 0 8px;
+    background-color: rgb(59, 130, 246);
+    height: 32px;
+    line-height: 32px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    margin-left: 10px;
+    font-weight: 100;
+    font-family: 华文楷体, serif;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.picsContainer{
+    margin: 5px;
+    height: 160px;
+}

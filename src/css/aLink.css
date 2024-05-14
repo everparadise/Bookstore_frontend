@@ -1,0 +1,9 @@
+a{
+    text-decoration: none;
+    color: rgb(99, 66, 99);
+    font-weight: bold;
+}
+a:hover{
+    transform: scale(1.04);
+    transition: transform 0.2s, ease-in;
+}

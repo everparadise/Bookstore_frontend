@@ -1,0 +1,54 @@
+.NavTag{
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 22px;
+    height: 100%;
+    padding-right: 12px;
+    line-height: 100%;
+    padding-left: 0;
+}
+.NavTag:first-of-type{
+    margin-left: 64px;
+}
+.NavTag:hover{
+    transform: scale(1.04);
+    transition: all, 0.2s, ease-in;
+}
+.NavTagLink{
+    text-decoration: underline cornflowerblue;
+    font-family: "Comic Sans MS", serif;
+    color: cornflowerblue;
+}
+.antdHeader{
+    background: rgba(244, 244, 244, 0.6);
+}
+.profileContainer{
+
+    margin-right: 100px;
+    float: right;
+    border-radius: 50%;
+    background-size: cover;
+    display: inline-block;
+    cursor: pointer;
+}
+.profileContainer:hover{
+    transform: scale(1.04);
+    transition: all, 0.2s, ease-in;
+}
+.spacer{
+    width: 100%;
+}
+.logo{
+    margin-left: 64px;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.sayHi{
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 24px;
+    letter-spacing: 1px;
+    font-family: "Comic Sans MS", serif;
+}
