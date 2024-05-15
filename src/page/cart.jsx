@@ -41,19 +41,24 @@ export default function Cart() {
             message.warning("请添加联系方式");
             return;
         }
-        cartItems.forEach((item) => {
-            if (item.selected) {
-                postOrder({
-                    telephone: telephone,
-                    address: address,
-                    uid: state.user.uid,
-                    bid: item.bid,
-                    totalPrice: item.price * item.number,
-                    number: item.number,
-                    name: receiver
-                }, `order/addOrder/${item.cid}`);
-            }
-        })
+        try{
+            cartItems.forEach((item) => {
+                if (item.selected) {
+                    postOrder({
+                        telephone: telephone,
+                        address: address,
+                        uid: state.user.uid,
+                        bid: item.bid,
+                        totalPrice: item.price * item.number,
+                        number: item.number,
+                        name: receiver
+                    }, `order/addOrder/${item.cid}`);
+                }
+            })
+        }catch(error){
+            message.error("添加失败");
+        }
+
         setCartItems(cartItems.filter((item) => !item.selected));
         message.success("下单成功");
         setIsModalOpen(false);

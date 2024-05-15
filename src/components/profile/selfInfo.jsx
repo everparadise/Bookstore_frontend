@@ -55,7 +55,7 @@ export function SelfInfo({user}) {
             </span>
             <span className="info-money">
                 <p className="info-title">pocket:</p>
-                <p className="info-content info-moneyNum">10000.00</p>
+                <p className="info-content info-moneyNum">{user.remainMoney}</p>
             </span>
             <div className="info-slogan">
                 <p className="info-title">Notes:</p>

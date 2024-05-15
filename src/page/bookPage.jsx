@@ -55,7 +55,8 @@ export function BookMain({index}) {
             totalPrice: number * book.price,
             uid: state.user.uid,
             name: receiver,
-            number: number
+            number: number,
+            address: address
         });
         message.success("下单成功");
         setIsModalOpen(false);
