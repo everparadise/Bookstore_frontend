@@ -1,5 +1,5 @@
 import {cartBook} from "../types/book";
 
-export function deleteCartItem(cartBook : cartBook){
+export function deleteCartItem(cartBook: cartBook) {
 
 }

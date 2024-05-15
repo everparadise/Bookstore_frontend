@@ -1,33 +1,39 @@
-.rankingGrid{
+.rankingGrid {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-column-gap: 0;
     height: 1100px;
-    z-index:1;
+    z-index: 1;
 }
-.graphAxis{
+
+.graphAxis {
     position: absolute;
     z-index: 0;
 }
-.graphOuter{
+
+.graphOuter {
     position: relative;
     line-height: 75px;
     box-sizing: border-box;
 }
-.gridContainer{
+
+.gridContainer {
 
 }
-.gridCol{
+
+.gridCol {
     background-color: rgb(240, 240, 240);
     height: 900px;
 }
-.polyName{
+
+.polyName {
     writing-mode: vertical-lr;
     color: rgb(120, 120, 120);
     font-size: 14px;
     font-weight: lighter;
 }
-.graphPoly{
+
+.graphPoly {
     background-color: powderblue;
     width: 100%;
 }

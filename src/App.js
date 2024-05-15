@@ -4,13 +4,13 @@ import React from "react"
 
 
 function App() {
-  return (
-      // eslint-disable-next-line react/jsx-no-undef
-      <React.StrictMode>
-        <Router></Router>
-      </React.StrictMode>
+    return (
+        // eslint-disable-next-line react/jsx-no-undef
+        <React.StrictMode>
+            <Router></Router>
+        </React.StrictMode>
 
-  )
+    )
 }
 
 export default App;

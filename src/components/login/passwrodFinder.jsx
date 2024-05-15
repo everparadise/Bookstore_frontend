@@ -4,7 +4,7 @@ import {MytextInput, PasswordInput} from "./loginContainer";
 import {getUserData} from "../../service/UserProvider";
 import {message} from "antd";
 
-export function PasswordFinder(){
+export function PasswordFinder() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -12,31 +12,33 @@ export function PasswordFinder(){
     const [containerState, setContainerState] = useState(0);
     const users = getUserData();
     const [user, setUser] = useState(null);
-    function handleFind(){
-        if(newPassword === ""){
+
+    function handleFind() {
+        if (newPassword === "") {
             message.warning({
                 content: "请输入新密码"
             })
-        return;
+            return;
         }
         navigate("../");
     }
-    function handleNext(e){
+
+    function handleNext(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        const target = users.find((user)=>{
+        const target = users.find((user) => {
             return user.name === username;
         })
 
-        if(!target){
+        if (!target) {
             message.error({
                 content: "用户不存在，请重新输入用户账户"
             })
             return;
         }
         setUser(target);
-        setContainerState(containerState+1);
+        setContainerState(containerState + 1);
     }
 
     const inputUsername = (

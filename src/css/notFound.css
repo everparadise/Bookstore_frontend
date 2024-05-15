@@ -1,7 +1,8 @@
-.notFound{
+.notFound {
 
 }
-.backToMain{
+
+.backToMain {
     background-color: rgb(255, 0, 0);
     color: white;
     border-radius: 10px;
@@ -11,10 +12,12 @@
     padding: 10px;
 
 }
-.backToMain:hover{
+
+.backToMain:hover {
     transform: scale(1.02);
     transition: all 0.2s ease-in;
 }
-.detail{
+
+.detail {
     height: 200px;
 }

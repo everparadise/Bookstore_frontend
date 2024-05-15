@@ -1,17 +1,17 @@
-export interface book{
+export interface book {
     bid: number,
     pic: string,
     name: string,
     comment: string,
     author: string,
     price: number,
-    stock ?: number,
-    tag ?: string,
+    stock?: number,
+    tag?: string,
     sales: number,
-    isbn ?: string
+    isbn?: string
 }
 
-export interface BookDto{
+export interface BookDto {
     bid: number,
     pic: string,
     name: string,
@@ -19,7 +19,7 @@ export interface BookDto{
     sales: number
 }
 
-export interface cartBook{
+export interface cartBook {
     book: book;
     number: number;
     selected: false;

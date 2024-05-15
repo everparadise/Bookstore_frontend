@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
     uid: number;
     username: string;
     slogan: string;

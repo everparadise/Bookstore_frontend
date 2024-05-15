@@ -4,17 +4,17 @@ import {Outlet, useNavigate} from "react-router-dom";
 import {store} from "../reduxLogic/store";
 import {useEffect} from "react";
 
-export function MainPage(){
+export function MainPage() {
     const navigate = useNavigate();
-    useEffect(()=>{
+    useEffect(() => {
         const user = store.getState();
-        if(!user.isAuthenticated){
+        if (!user.isAuthenticated) {
             navigate("/");
         }
-    },[])
+    }, [])
 
 
-    return(
+    return (
         <GridLayout>
             <Sidebar></Sidebar>
             <Outlet/>

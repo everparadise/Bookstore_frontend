@@ -1,3 +1,3 @@
-export default function BookNavList(){
+export default function BookNavList() {
 
 }

@@ -1,4 +1,4 @@
-.profile-page{
+.profile-page {
     display: grid;
     grid-template-columns: 4fr 6fr;
     justify-items: center;
@@ -7,7 +7,8 @@
     max-width: 90%;
     font-family: "Noto Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
 }
-.profile-avatar{
+
+.profile-avatar {
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -15,7 +16,7 @@
 }
 
 
-.avatar-img{
+.avatar-img {
     margin: 60px auto 30px;
     width: 80%;
     height: auto;
@@ -24,10 +25,12 @@
 
     border-radius: 50%;
 }
-.avatar-header{
+
+.avatar-header {
 
 }
-.avatar-upload{
+
+.avatar-upload {
     background-color: rgba(255, 255, 255, 0.2);
 
     border-radius: 10px;
@@ -42,17 +45,19 @@
     align-items: center;
     justify-content: center;
 }
-.avatar-upload:hover{
+
+.avatar-upload:hover {
     transform: scale(1.03);
     box-shadow: 5px 5px 10px 2px rgb(100, 100, 100, 0.4);
     transition: all 0.4s;
 }
-.upload-button{
+
+.upload-button {
     margin: 0 10px;
 
 }
 
-.selfInfo-card{
+.selfInfo-card {
     margin: 40px;
     display: grid;
     grid-template-rows: 1fr 1fr 6fr 1fr;
@@ -60,12 +65,13 @@
     height: 80%;
 }
 
-.selfInfo-card .info-title{
+.selfInfo-card .info-title {
     font-weight: bold;
     font-size: 18px;
 
 }
-.selfInfo-card .info-content{
+
+.selfInfo-card .info-content {
     font-size: 16px;
     color: rgb(40, 40, 40);
     width: 60%;
@@ -77,11 +83,12 @@
     margin: 10px 0;
 
 }
-.selfInfo-card .info-moneyNum{
+
+.selfInfo-card .info-moneyNum {
     color: rgb(255, 50, 21);
 }
 
-.slogan-text{
+.slogan-text {
     height: 80%;
     width: 100%;
     margin-top: 20px;
@@ -92,14 +99,14 @@
     text-decoration: none;
 }
 
-.info-button{
+.info-button {
     display: flex;
     justify-content: space-around;
     width: 100%;
 
 }
 
-.info-button button{
+.info-button button {
     height: 40px;
     width: 100px;
     border-radius: 20px;
@@ -108,11 +115,13 @@
     border: solid 2px rgb(155, 155, 155);
 
 }
-.info-button button:hover{
+
+.info-button button:hover {
     transform: scale(1.03);
     box-shadow: 2px 2px 10px 5px rgb(100, 100, 100);
     transition: all 0.4s;
 }
-.info-button .info-save{
+
+.info-button .info-save {
     background-color: rgb(50, 167, 226);
 }

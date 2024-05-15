@@ -4,12 +4,14 @@ import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 
-export function OrderItem({item}){
+export function OrderItem({item}) {
     const [detail, setDetail] = useState(false);
-    function handleDetail(){
+
+    function handleDetail() {
         setDetail(!detail);
     }
-    return(
+
+    return (
         <>
             <div className="orderItemGrid">
                 <button className="detailSpan" onClick={handleDetail}><FontAwesomeIcon icon={faPlus}/></button>
@@ -23,26 +25,28 @@ export function OrderItem({item}){
 
     )
 }
-export function OrderHeader(){
+
+export function OrderHeader() {
     return (
-        <div className = "orderHeaderGrid">
+        <div className="orderHeaderGrid">
             <p></p>
-            <p className = "listHeader">收货人</p>
-            <p className = "listHeader">联系方式</p>
-            <p className = "listHeader">收货地址</p>
-            <p className = "listHeader">下单时间</p>
+            <p className="listHeader">收货人</p>
+            <p className="listHeader">联系方式</p>
+            <p className="listHeader">收货地址</p>
+            <p className="listHeader">下单时间</p>
         </div>
     )
 }
-function Detail({item}){
+
+function Detail({item}) {
     //参数为orderdata
-    return(
-        <div className = "cartDetail">
-            <span className= "detailPicContainer">
+    return (
+        <div className="cartDetail">
+            <span className="detailPicContainer">
                  <img className="detailPic" src={item.pic} alt={item.name}/>
             </span>
-            <p className = "listHeader orderSpacer">书名: {item.name}</p>
-            <p className = "orderItemFont">数目: {item.number}</p>
+            <p className="listHeader orderSpacer">书名: {item.name}</p>
+            <p className="orderItemFont">数目: {item.number}</p>
         </div>
     )
 }

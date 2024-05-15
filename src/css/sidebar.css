@@ -1,4 +1,4 @@
-.sidebarList{
+.sidebarList {
     background-color: rgb(255, 255, 255);
     width: 100%;
     color: rgb(44, 44, 44);
@@ -10,24 +10,28 @@
     display: block;
     font-family: 华文楷体, serif;
 }
-.sidebarList:hover{
+
+.sidebarList:hover {
     background-color: rgb(238, 255, 255);
     transform: scale(1);
     color: rgb(100, 200, 255);
     transition: all 0.2s ease-in;
 }
-.active{
+
+.active {
     color: rgb(65, 154, 255);
     background-color: rgb(220, 255, 255);
     border-right: solid 2px rgb(31, 158, 255);
 }
-.sidebar{
+
+.sidebar {
     border: solid 1px rgb(155, 155, 155);
     margin-left: 64px;
     height: 100%;
     border-bottom: none;
     min-width: 240px;
 }
-.sidebarContainer{
+
+.sidebarContainer {
     width: 100%;
 }

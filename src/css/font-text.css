@@ -1,44 +1,52 @@
-.p24{
+.p24 {
     font-size: 24px;
 }
-.stress{
+
+.stress {
     font-weight: bolder;
 }
-.key{
+
+.key {
     font-size: 14px;
     font-weight: bold;
     color: rgb(22, 22, 22);
 
 }
-.val{
+
+.val {
     font-size: 14px;
     font-weight: normal;
     color: rgb(64, 64, 64);
     text-overflow: ellipsis;
 }
-.title{
+
+.title {
     color: rgb(77, 77, 77);
     font-size: 28px;
     font-weight: bold;
     margin-bottom: 24px;
 }
-.modalTitle{
+
+.modalTitle {
     margin: 10px 2px 5px 5px;
     font-size: 14px;
     font-weight: bold;
 }
-.spacerLine{
+
+.spacerLine {
     margin-bottom: 24px;
 }
-.comment{
+
+.comment {
     max-height: 80%;
     max-width: 60%;
     font-size: 14px;
     font-weight: normal;
     color: rgb(64, 64, 64);
-    overflow:hidden;
+    overflow: hidden;
 }
-.commentFont{
+
+.commentFont {
     text-overflow: ellipsis;
     max-height: 100%;
     display: -webkit-box;

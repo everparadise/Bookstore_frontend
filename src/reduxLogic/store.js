@@ -1,31 +1,34 @@
-import {createSlice, configureStore} from "@reduxjs/toolkit"
+import {configureStore} from "@reduxjs/toolkit"
 import {putData} from "../service/putAPI";
 
 const init = {
     user: null,
     isAuthenticated: false
 }
-export function loginUser(user){
+
+export function loginUser(user) {
     return {
         type: "LOGIN",
         payload: user
     }
 }
-export function modifyUserInfo(user){
+
+export function modifyUserInfo(user) {
     putData("user/userInfo", user);
-    return{
+    return {
         type: "MODIFY",
         payload: user
     }
 }
-export function logoutUser(){
+
+export function logoutUser() {
     return {
         type: "LOGOUT"
     }
 }
 
-export function rootReducer(state, action){
-    switch(action.type){
+export function rootReducer(state, action) {
+    switch (action.type) {
         case "LOGIN":
             return {
                 isAuthenticated: true,
@@ -36,9 +39,11 @@ export function rootReducer(state, action){
                 isAuthenticated: false,
                 user: null
             }
-        default: return state;
+        default:
+            return state;
     }
 }
+
 export const store = configureStore({
     reducer: rootReducer,
     preloadedState: init

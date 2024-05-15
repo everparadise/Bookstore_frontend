@@ -1,4 +1,4 @@
-.NavTag{
+.NavTag {
     cursor: pointer;
     font-weight: bold;
     font-size: 22px;
@@ -7,22 +7,27 @@
     line-height: 100%;
     padding-left: 0;
 }
-.NavTag:first-of-type{
+
+.NavTag:first-of-type {
     margin-left: 64px;
 }
-.NavTag:hover{
+
+.NavTag:hover {
     transform: scale(1.04);
     transition: all, 0.2s, ease-in;
 }
-.NavTagLink{
+
+.NavTagLink {
     text-decoration: underline cornflowerblue;
     font-family: "Comic Sans MS", serif;
     color: cornflowerblue;
 }
-.antdHeader{
+
+.antdHeader {
     background: rgba(244, 244, 244, 0.6);
 }
-.profileContainer{
+
+.profileContainer {
 
     margin-right: 100px;
     float: right;
@@ -31,21 +36,24 @@
     display: inline-block;
     cursor: pointer;
 }
-.profileContainer:hover{
+
+.profileContainer:hover {
     transform: scale(1.04);
     transition: all, 0.2s, ease-in;
 }
-.spacer{
+
+.spacer {
     width: 100%;
 }
-.logo{
+
+.logo {
     margin-left: 64px;
     height: 100%;
     object-fit: contain;
     cursor: pointer;
 }
 
-.sayHi{
+.sayHi {
     font-weight: bold;
     font-size: 12px;
     margin-right: 24px;

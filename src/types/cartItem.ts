@@ -1,5 +1,4 @@
-import {book}  from "./book"
-export interface cartItem{
+export interface cartItem {
     cid: number,
     bid: number,
     uid: number,

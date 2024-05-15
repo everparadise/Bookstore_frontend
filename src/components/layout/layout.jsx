@@ -1,24 +1,26 @@
 import Footer from "./footer"
 import Navbar from "./header"
-import {useEffect, useState} from "react"
+import {useState} from "react"
 import "../../css/layout.css"
 
-export function BackgroundFlexLayout({children}){
+export function BackgroundFlexLayout({children}) {
     const [background, setBackground] = useState(1);
-    async function timelySet(){
+
+    async function timelySet() {
         setBackground(background);
     }
-    return(
+
+    return (
         <>
 
-            <div className = "flexLayout" style = {{
-                    backgroundImage: `url(/src/background/background${background}.jpg)`,
-                    boxSizing: "border-box",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    position: "fixed",
-                }}>
+            <div className="flexLayout" style={{
+                backgroundImage: `url(/src/background/background${background}.jpg)`,
+                boxSizing: "border-box",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+                position: "fixed",
+            }}>
                 <Content>
                     {children}
                 </Content>
@@ -27,11 +29,12 @@ export function BackgroundFlexLayout({children}){
         </>
     )
 }
-export function PrivateLayout({children}){
-    return(
-        <div className = "privateLayout">
-            <Navbar user = {{remainMoney: 0}}></Navbar>
-            <div className = "w-full">
+
+export function PrivateLayout({children}) {
+    return (
+        <div className="privateLayout">
+            <Navbar user={{remainMoney: 0}}></Navbar>
+            <div className="w-full">
                 {children}
             </div>
             <Footer></Footer>
@@ -39,18 +42,21 @@ export function PrivateLayout({children}){
     )
 
 }
-export function GridLayout({children}){
+
+export function GridLayout({children}) {
     const [background, setBackground] = useState(1);
-    async function timelySet(){
+
+    async function timelySet() {
         setBackground(background);
     }
-    return(
-        <>
-            <Navbar user = {{remainMoney: 0}}></Navbar>
 
-                <GridContent>
-                    {children}
-                </GridContent>
+    return (
+        <>
+            <Navbar user={{remainMoney: 0}}></Navbar>
+
+            <GridContent>
+                {children}
+            </GridContent>
 
             <Footer></Footer>
         </>
@@ -59,13 +65,14 @@ export function GridLayout({children}){
     )
 }
 
-export function GridContent({children}){
-    return(
-        <div className = "gridcontent">{children}</div>
+export function GridContent({children}) {
+    return (
+        <div className="gridcontent">{children}</div>
     )
 }
-export function Content({children}){
-    return(
-        <div className = "content">{children}</div>
+
+export function Content({children}) {
+    return (
+        <div className="content">{children}</div>
     )
 }

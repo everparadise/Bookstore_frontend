@@ -12,33 +12,34 @@ export function Carousel() {
     const carouselRef = useRef();
     const pics = carouselData.map((item, index) => {
         return (
-            <div className="carouselPics" key={index}  style={{
+            <div className="carouselPics" key={index} style={{
                 backgroundImage: `url(${item.src})`,
                 backgroundSize: "contain",
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
-                backgroundPosition:"center"
+                backgroundPosition: "center"
             }}
             />)
     })
     const indexList = carouselData.map((item, index) => {
         return (
-            <span className={`dot ${index === active - 1? 'dotactive' : ''}`}  key={index}></span>
+            <span className={`dot ${index === active - 1 ? 'dotactive' : ''}`} key={index}></span>
         )
     })
-    useEffect(()=>{
-        const id = setInterval(()=>{
+    useEffect(() => {
+        const id = setInterval(() => {
             handleRight();
         }, 4000);
         //let ScrollTop = carouselRef.scrollTop;
         //carouselRef.current.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         //carouselRef.scrollTop = ScrollTop;
         carouselRef.current.scrollLeft = active * 530;
-        return ()=>{
+        return () => {
             clearTimeout(id);
         }
 
-    },[active])
+    }, [active])
+
     function handleLeft() {
         if (active == 1) {
             nextActive = maxIndex;
@@ -63,9 +64,11 @@ export function Carousel() {
 
     return (
         <div className="carouselContainer">
-            <button className="carouselButton buttonLeft" onClick={handleLeft}><FontAwesomeIcon icon={faAngleLeft} /></button>
-            <button className="carouselButton buttonRight" onClick={handleRight}><FontAwesomeIcon icon={faAngleRight} /></button>
-            <div className="carouselPicContainer" ref = {carouselRef}>
+            <button className="carouselButton buttonLeft" onClick={handleLeft}><FontAwesomeIcon icon={faAngleLeft}/>
+            </button>
+            <button className="carouselButton buttonRight" onClick={handleRight}><FontAwesomeIcon icon={faAngleRight}/>
+            </button>
+            <div className="carouselPicContainer" ref={carouselRef}>
                 <div className="empty-placeholder"/>
                 {pics}
                 <div className="empty-placeholder"/>

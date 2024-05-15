@@ -1,12 +1,13 @@
-.bookListContainer{
+.bookListContainer {
     display: grid;
     grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
     grid-row-gap: 10px;
 
     width: 100%;
 }
-.bookcardsLink{
-    background-image: linear-gradient(to bottom right ,#e0ffff, #ffffff);
+
+.bookcardsLink {
+    background-image: linear-gradient(to bottom right, #e0ffff, #ffffff);
     border-radius: 10px;
     height: 300px;
     border: solid 1px rgba(0, 0, 0, 0.5);
@@ -19,15 +20,18 @@
     align-items: flex-start;
     cursor: default;
 }
-.bookcardsLink:hover{
+
+.bookcardsLink:hover {
     transform: scale(1.02);
     box-shadow: 2px 2px 2px 2px rgba(33, 33, 33, 0.8);
     transition: all 0.2s ease-in;
 }
-.bookPic{
+
+.bookPic {
     max-width: 100%;
 }
-.bookName{
+
+.bookName {
     color: black;
     font-weight: bold;
     font-size: 18px;
@@ -36,7 +40,8 @@
     max-width: 100%;
     overflow: hidden;
 }
-.bookLighter{
+
+.bookLighter {
     font-weight: 100;
     color: grey;
     white-space: nowrap;
@@ -44,7 +49,8 @@
     max-width: 100%;
     overflow: hidden;
 }
-.bookControlContainer{
+
+.bookControlContainer {
     width: 90%;
 
     display: flex;
@@ -52,7 +58,8 @@
     justify-content: center;
     align-items: center;
 }
-.purchaseButton{
+
+.purchaseButton {
     width: auto;
     padding: 0 8px;
     background-color: rgb(59, 130, 246);
@@ -67,7 +74,8 @@
     margin-bottom: 5px;
     margin-top: 10px;
 }
-.picsContainer{
+
+.picsContainer {
     margin: 5px;
     height: 160px;
 }

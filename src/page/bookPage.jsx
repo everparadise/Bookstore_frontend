@@ -1,27 +1,26 @@
-import {GridLayout} from "../components/layout/layout";
-import Sidebar, {Spacer8px} from "../components/layout/sidebar";
+import {Spacer8px} from "../components/layout/sidebar";
 import "../css/font-text.css"
 import "../css/bookPage.css"
 import {useNavigate, useParams} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCaretLeft, faCartShopping, faCreditCard} from "@fortawesome/free-solid-svg-icons";
+import {faCartShopping, faCreditCard} from "@fortawesome/free-solid-svg-icons";
 import {Image, InputNumber, message, Modal} from "antd";
-import {BookList} from "../service/datas.ts";
 import {useFetch} from "../service/useFetch";
 import {postData} from "../service/postAPI";
 import {store} from "../reduxLogic/store";
 import {useState} from "react";
-import {MytextInput} from "../components/login/loginContainer";
 import {postOrder} from "../service/postOrder";
-export function BookPage(){
+
+export function BookPage() {
     const index = useParams();
 
 
-    return(
-        <BookMain index = {parseInt(index.id)}></BookMain>
+    return (
+        <BookMain index={parseInt(index.id)}></BookMain>
     )
 }
-export function BookMain({index}){
+
+export function BookMain({index}) {
     const book = useFetch(`book/book/${index}`);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [number, setNumber] = useState(1);
@@ -30,44 +29,55 @@ export function BookMain({index}){
     const [address, setAddress] = useState(null);
     const state = store.getState();
     const navigate = useNavigate();
-    function showModal(){
+
+    function showModal() {
         setIsModalOpen(true);
     }
-    function handleSubmit(e){
+
+    function handleSubmit(e) {
         e.stopPropagation();
         e.preventDefault();
-        if(!receiver){
+        if (!receiver) {
             message.warning("请添加收件人");
             return;
         }
-        if(!address){
+        if (!address) {
             message.warning("请添加收件地址");
             return;
         }
-        if(!telephone){
+        if (!telephone) {
             message.warning("请添加联系方式");
             return;
         }
-        postOrder({bid: index, telephone: telephone, totalPrice: number* book.price, uid: state.user.uid, reveiver: receiver, number: number});
+        postOrder({
+            bid: index,
+            telephone: telephone,
+            totalPrice: number * book.price,
+            uid: state.user.uid,
+            name: receiver,
+            number: number
+        });
         message.success("下单成功");
         setIsModalOpen(false);
         navigate("/home");
     }
-    function handleCancel(e){
+
+    function handleCancel(e) {
         e.stopPropagation();
         e.preventDefault();
         setIsModalOpen(false);
     }
+
     return (
         book && <>
             <BookGrid book={book} showModal={showModal}></BookGrid>
-            <Modal centered={true} title={"请添加订单信息"} open = {isModalOpen} footer={null} closable={false}>
+            <Modal centered={true} title={"请添加订单信息"} open={isModalOpen} footer={null} closable={false}>
                 <form className="purchaseForm">
-                    <p className = "modalTitle">下单数量</p>
+                    <p className="modalTitle">下单数量</p>
                     <InputNumber style={{
                         height: '35px',
                         margin: 'auto 0'
-                    }} min={1} max={100} defaultValue={1} onChange = {(value)=>{
+                    }} min={1} max={100} defaultValue={1} onChange={(value) => {
                         setNumber(value);
                     }}/>
                     <p className="modalTitle">收件人</p>
@@ -102,6 +112,7 @@ function BookGrid({book, showModal}) {
         message.success("成功添加购物车");
         navigate("/home");
     }
+
     return (
         <div className="bookGrid">
 
@@ -130,9 +141,12 @@ function BookGrid({book, showModal}) {
             </div>
             <div className="grid2">
                 <span></span>
-                <button className="addCart" onClick = {()=>handleCart()}><FontAwesomeIcon icon={faCartShopping} beatFade/><Spacer8px/>加入购物车
+                <button className="addCart" onClick={() => handleCart()}><FontAwesomeIcon icon={faCartShopping}
+                                                                                          beatFade/><Spacer8px/>加入购物车
                 </button>
-                <button className="buyNow" onClick = {showModal}><FontAwesomeIcon icon={faCreditCard} beatFade/><Spacer8px/>立即购买</button>
+                <button className="buyNow" onClick={showModal}><FontAwesomeIcon icon={faCreditCard}
+                                                                                beatFade/><Spacer8px/>立即购买
+                </button>
                 <span></span>
             </div>
         </div>

@@ -1,4 +1,4 @@
-.loginContainer{
+.loginContainer {
     display: flex;
     backdrop-filter: blur(4px);
     border: 2px solid rgba(225, 225, 225, .5);
@@ -10,28 +10,34 @@
     padding: 18px;
     font-family: "Roboto Light", serif;
 }
-.LogoContainer{
+
+.LogoContainer {
     weight: auto;
     height: auto;
     text-align: center;
 }
-.Logo{
+
+.Logo {
     width: 200px;
 }
-.reg{
+
+.reg {
     float: left;
 }
-.find{
+
+.find {
     float: right;
 }
-.regFindLink{
+
+.regFindLink {
     text-decoration: none;
     font-size: 14px;
-    color:rgb(180, 200, 255);
+    color: rgb(180, 200, 255);
     font-family: 华文楷体, serif;
     margin-bottom: 20px;
 }
-.regFindLink:hover{
-    color: rgb(155, 170 ,255);
+
+.regFindLink:hover {
+    color: rgb(155, 170, 255);
     transition: color 0.2s ease-in;
 }
