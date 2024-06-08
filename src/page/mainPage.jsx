@@ -1,17 +1,15 @@
 import {GridLayout} from "../components/layout/layout";
 import Sidebar from "../components/layout/sidebar";
-import {Outlet, useNavigate} from "react-router-dom";
-import {store} from "../reduxLogic/store";
-import {useEffect} from "react";
+import {Outlet} from "react-router-dom";
 
 export function MainPage() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        const user = store.getState();
-        if (!user.isAuthenticated) {
-            navigate("/");
-        }
-    }, [])
+    //const navigate = useNavigate();
+    // useEffect(() => {
+    //     const user = store.getState();
+    //     if (!user.isAuthenticated) {
+    //         navigate("/");
+    //     }
+    // }, [])
 
 
     return (

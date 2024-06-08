@@ -38,7 +38,7 @@ export function OrderHeader() {
     )
 }
 
-function Detail({item}) {
+export function Detail({item}) {
     //参数为orderdata
     return (
         <div className="cartDetail">

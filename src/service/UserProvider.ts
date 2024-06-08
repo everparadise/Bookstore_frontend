@@ -1,4 +1,4 @@
-import {store} from "../reduxLogic/store";
+import {store} from "../util/store";
 
 export function getUserData() {
     return store.getState().user;

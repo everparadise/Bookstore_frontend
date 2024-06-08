@@ -19,7 +19,7 @@
 .avatar-img {
     margin: 60px auto 30px;
     width: 80%;
-    height: auto;
+    aspect-ratio: 1 / 1;
     border: solid 2px rgb(155, 155, 155);
     box-shadow: 2px 2px 10px 5px rgb(100, 100, 100);
 
@@ -52,9 +52,12 @@
     transition: all 0.4s;
 }
 
+.fileInput {
+    display: none;
+}
+
 .upload-button {
     margin: 0 10px;
-
 }
 
 .selfInfo-card {

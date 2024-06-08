@@ -1,5 +1,4 @@
 import {Link, useLocation} from "react-router-dom";
-import {useRef} from "react";
 import "../../css/sidebar.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
@@ -10,10 +9,11 @@ import {
     faReceipt,
     faUser
 } from "@fortawesome/free-solid-svg-icons";
+import {store} from "../../util/store";
 
 export default function Sidebar() {
     const location = useLocation();
-    const activeRef = useRef();
+
     const lists = [
         {
             text: "home", loc: "/home", font: (
@@ -46,7 +46,32 @@ export default function Sidebar() {
             )
         }
     ]
-    const listsMap = lists.map((item) => {
+    const adminList = [
+
+        {
+            text: "home", loc: "/home", font: (
+                <FontAwesomeIcon icon={faHouseChimney}/>
+            )
+        },
+        {
+            text: "order", loc: "/order", font: (
+                <FontAwesomeIcon icon={faReceipt}/>
+            )
+        },
+        {
+            text: "Rank Manage", loc: "/rankManage", font: (
+                <FontAwesomeIcon icon={faRankingStar}/>
+            )
+        },
+        {
+            text: "User Manage", loc: "/userManage", font: (
+                <FontAwesomeIcon icon={faUser}/>
+            )
+        }
+    ]
+    const selectedList = store.getState().authority === "ADMIN" ? adminList : lists;
+
+    const listsMap = selectedList.map((item) => {
         return <Link key={item.text} className={`sidebarList ${location.pathname.startsWith(item.loc) ? "active" : ""}`}
                      to={item.loc === "/book" ? "#" : item.loc}>
             {item.font}<Spacer8px/>{item.text}

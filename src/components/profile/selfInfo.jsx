@@ -1,6 +1,5 @@
 import {useState} from "react";
-import {putData} from "../../service/putAPI";
-import {fetchData} from "../../service/fetchAPI";
+import {PrivateFetch} from "../../service/PrivateFetch";
 
 export function SelfInfo({user}) {
     const [name, setName] = useState(user ? user.username : "chiikawa")
@@ -11,15 +10,20 @@ export function SelfInfo({user}) {
 
         user.username = name;
         user.slogan = notes;
-        await userModify("user/userInfo", user);
+        try {
+            await userModify("user", user);
+        } catch (error) {
+
+        }
+
         setModify(false);
     }
 
     async function userModify(endpoint, userInfo) {
         try {
-            await putData(endpoint, userInfo);
+            await PrivateFetch(endpoint, "PUT", null, userInfo);
         } catch (e) {
-            user = fetchData(`user/userInfo/${user.uid}`);
+            user = PrivateFetch(`user`, "GET");
             setName(user.username);
             setNotes(user.slogan);
         }
@@ -55,13 +59,13 @@ export function SelfInfo({user}) {
             </span>
             <span className="info-money">
                 <p className="info-title">pocket:</p>
-                <p className="info-content info-moneyNum">{user.remainMoney}</p>
+                <p className="info-content info-moneyNum">{user.remainMoney / 100}</p>
             </span>
             <div className="info-slogan">
                 <p className="info-title">Notes:</p>
                 <textarea className="slogan-text" disabled={!modify} value={notes} onChange={(e) => {
                     setNotes(e.target.value)
-                }} placeholder="请输入个人签名"></textarea>
+                }} placeholder="请输入个人签名"/>
             </div>
             {modify ? saveButton : modifyButton}
         </div>

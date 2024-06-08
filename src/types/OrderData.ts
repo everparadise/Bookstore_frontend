@@ -19,3 +19,9 @@ export interface orderBook {
     totalPrice: number;
     name: string;
 }
+
+export interface orderItem {
+    bid: number,
+    numbers: number,
+    cid: number,
+}

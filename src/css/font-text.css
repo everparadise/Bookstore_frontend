@@ -33,6 +33,13 @@
     font-weight: bold;
 }
 
+.modalPic {
+    display: inline-block;
+    max-width: 100px;
+    max-height: 160px;
+    height: auto;
+}
+
 .spacerLine {
     margin-bottom: 24px;
 }

@@ -3,14 +3,14 @@
 }
 
 .backToMain {
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 81, 81);
     color: white;
     border-radius: 10px;
     letter-spacing: 1px;
     font-size: 16px;
     font-family: 华文楷体, serif;
     padding: 10px;
-
+    margin-top: 20px;
 }
 
 .backToMain:hover {
@@ -19,5 +19,7 @@
 }
 
 .detail {
-    height: 200px;
+    color: rgb(255, 117, 81);
+    font-size: 20px;
+    font-weight: bold;
 }

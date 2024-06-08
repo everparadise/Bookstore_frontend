@@ -37,3 +37,20 @@
     background-color: powderblue;
     width: 100%;
 }
+
+.BookItemGrid {
+    height: 80px;
+    line-height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 5fr 5fr 8fr 8fr;
+    border-bottom: solid 1px rgb(240, 240, 240);
+}
+
+.BookHeaderGrid {
+    display: grid;
+    grid-template-columns: 1fr 5fr 5fr 8fr 8fr;
+}
+
+.rankingFilter{
+    margin-bottom: 20px;
+}

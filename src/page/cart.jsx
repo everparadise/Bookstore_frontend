@@ -3,10 +3,9 @@ import {CartHeader, CartListItem} from "../components/cart/cart";
 import "../css/cart.css"
 import {PrivateEmpty} from "../components/404page/privateEmpty";
 import {useEffect, useState} from "react";
-import {fetchData} from "../service/fetchAPI";
-import {deleteData} from "../service/deleteAPI";
 import {postOrder} from "../service/postOrder";
-import {store} from "../reduxLogic/store";
+import {PrivateFetch} from "../service/PrivateFetch";
+import {CartItemToOrderItem} from "../service/CartItemToOrderItem";
 
 export default function Cart() {
     let totalPrice = 0;
@@ -15,10 +14,9 @@ export default function Cart() {
     const [receiver, setReceiver] = useState(null);
     const [telephone, setTelephone] = useState(null);
     const [address, setAddress] = useState(null);
-    const state = store.getState();
 
     async function getCart() {
-        const cartList = await fetchData(`cart/items/1`);
+        const cartList = await PrivateFetch(`cart`, "GET");
         setCartItems(cartList);
     }
 
@@ -41,21 +39,16 @@ export default function Cart() {
             message.warning("请添加联系方式");
             return;
         }
-        try{
-            cartItems.forEach((item) => {
-                if (item.selected) {
-                    postOrder({
-                        telephone: telephone,
-                        address: address,
-                        uid: state.user.uid,
-                        bid: item.bid,
-                        totalPrice: item.price * item.number,
-                        number: item.number,
-                        name: receiver
-                    }, `order/addOrder/${item.cid}`);
-                }
-            })
-        }catch(error){
+        try {
+            const newOrderItem = cartItems.map(CartItemToOrderItem);
+            const newOrder = {
+                telephone: telephone,
+                address: address,
+                receiver: receiver,
+                items: newOrderItem
+            }
+            postOrder(newOrder);
+        } catch (error) {
             message.error("添加失败");
         }
 
@@ -72,7 +65,7 @@ export default function Cart() {
 
     async function handleDelete(e, cid) {
         // const cartList = await
-        deleteData(`cart/deleteItem/${cid}`);
+        PrivateFetch(`cart/${cid}`, "DELETE");
         setCartItems(cartItems.filter(item => item.cid !== cid));
     }
 
@@ -107,7 +100,7 @@ export default function Cart() {
                     <p style={{
                         fontWeight: "bold",
                         color: "rgb(40, 40, 40)",
-                    }}>总价: {totalPrice}元</p>
+                    }}>总价: {totalPrice / 100}元</p>
                     {totalPrice ? <button className="purchaseNow" onClick={showModal}>立即下单</button> : null}
                 </> : null}
             </div>

@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {MytextInput, PasswordInput} from "./loginContainer";
-import {getUserData} from "../../service/UserProvider";
 import {message} from "antd";
 
 export function PasswordFinder() {
@@ -10,7 +9,6 @@ export function PasswordFinder() {
     const [username, setUsername] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [containerState, setContainerState] = useState(0);
-    const users = getUserData();
     const [user, setUser] = useState(null);
 
     function handleFind() {
@@ -23,29 +21,27 @@ export function PasswordFinder() {
         navigate("../");
     }
 
-    function handleNext(e) {
+    async function handleNext(e) {
         e.preventDefault();
         e.stopPropagation();
 
-        const target = users.find((user) => {
-            return user.name === username;
-        })
-
-        if (!target) {
-            message.error({
-                content: "用户不存在，请重新输入用户账户"
-            })
-            return;
-        }
-        setUser(target);
-        setContainerState(containerState + 1);
+        // target = await PrivateFetch("")
+        //
+        // if (!target) {
+        //     message.error({
+        //         content: "用户不存在，请重新输入用户账户"
+        //     })
+        //     return;
+        // }
+        // setUser(target);
+        // setContainerState(containerState + 1);
     }
 
     const inputUsername = (
         <div className="loginContainer">
             <div className="LogoContainer"><img className="Logo" src="/src/logo_col.png" alt="BookEase"/></div>
             <form className="loginForm">
-                <MytextInput state={{value: username, func: setUsername}}/>
+                <MytextInput state={{value: username, func: setUsername}} message="请输入用户名"/>
                 <button onClick={handleNext} className="loginButton">下一步</button>
             </form>
         </div>

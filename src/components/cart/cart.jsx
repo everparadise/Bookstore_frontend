@@ -29,10 +29,10 @@ export function CartListItem({item, state, handleDelete}) {
                     item.number = value;
                     state.setCheck(!state.check);
                 }}/>
-                <span> {item.number * item.price}</span>
+                <span> {item.number * item.price / 100}</span>
                 <button className="deleteButton" onClick={(e) => handleDelete(e, item.cid)}>删除</button>
             </div>
-            {detail ? <Detail item={item}></Detail> : null}
+            {detail ? <BookListDetail item={item}></BookListDetail> : null}
         </div>
 
     )
@@ -56,7 +56,7 @@ export function CartHeader({data, state}) {
     )
 }
 
-function Detail({item}) {
+export function BookListDetail({item}) {
     //参数为book类
     return (
         <div className="cartDetail">

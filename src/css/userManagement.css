@@ -1,0 +1,55 @@
+.userManager{
+    margin-top: 20px;
+    height: 80px;
+    line-height: 80px;
+
+    border: solid rgb(220, 220, 220) 1px;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+
+    width: 20em;
+}
+
+.user-image-container{
+    height: 80%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: solid rgb(140, 140, 140) 2px;
+    margin-left: 20px;
+}
+
+.user-image{
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    height: 100%;
+}
+
+.user-name{
+
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.usernameFont{
+    position: relative;
+    top: 10px;
+    left: 10px;
+}
+
+.buttonContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    color: rgb(255, 117, 81);
+}
+.centerFlex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,6 +1,7 @@
 import {orderBook} from "../types/OrderData";
-import {postData} from "./postAPI";
+import {PrivateFetch} from "./PrivateFetch";
 
-export function postOrder(orders: orderBook, endpoint: string = "order/addOrder/0") {
-    postData(endpoint, orders);
+export function postOrder(orders: orderBook, endpoint: string = "order") {
+    console.log(orders);
+    PrivateFetch(endpoint, "POST", null, orders);
 }

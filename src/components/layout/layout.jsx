@@ -52,7 +52,7 @@ export function GridLayout({children}) {
 
     return (
         <>
-            <Navbar user={{remainMoney: 0}}></Navbar>
+            <Navbar></Navbar>
 
             <GridContent>
                 {children}
