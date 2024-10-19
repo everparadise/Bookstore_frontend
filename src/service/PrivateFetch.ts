@@ -8,6 +8,7 @@ export const base = `${TARGET_URL}${CURR_VERSION}`;
 
 interface RequestOptions {
     method: string;
+    credentials: any;
     headers?: any;
     body?: any;
 }
@@ -17,13 +18,17 @@ export async function PrivateFetch(endpoint: string, method: string, options: an
     const token = store.getState().token;
     const defaultOptions: RequestOptions = {
         method: method || "GET",
-        headers: {}
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        }
     };
     if (body && method !== "GET") {
         if (body instanceof FormData) {
             defaultOptions.body = body;
         } else {
             defaultOptions.headers['Content-Type'] = "application/json"
+            defaultOptions.headers['credentials'] = "include"
             defaultOptions.body = JSON.stringify(body);
         }
     }
@@ -34,11 +39,10 @@ export async function PrivateFetch(endpoint: string, method: string, options: an
 
     const finalOptions = {...defaultOptions};
     console.log(url);
-    console.log(body);
-    console.log(finalOptions);
-
+    console.log("token", token);
+    //console.log(body);
+    console.log(defaultOptions);
     const response = await fetch(url, defaultOptions);
-    console.log("response", response);
     if (!response.ok) {
         if (response.status === 401) {
             //window.location.href = "/";
@@ -56,7 +60,7 @@ export async function PrivateFetch(endpoint: string, method: string, options: an
     //     window.location.href = '/';
     // }
     // throw new Error(`${data.message}}`);
-
+    console.log(data, data.resource);
     return data.resource;
 
 }

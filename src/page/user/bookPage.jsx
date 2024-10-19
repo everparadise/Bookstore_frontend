@@ -7,7 +7,7 @@ import {faCartShopping, faCreditCard} from "@fortawesome/free-solid-svg-icons";
 import {Image, InputNumber, message, Modal} from "antd";
 import {useFetch} from "../../service/useFetch";
 import {store} from "../../util/store";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {postOrder} from "../../service/postOrder";
 import {PrivateFetch} from "../../service/PrivateFetch";
 
@@ -27,9 +27,16 @@ export function BookMain({index}) {
     const [receiver, setReceiver] = useState("");
     const [telephone, setTelephone] = useState("");
     const [address, setAddress] = useState("");
+    const [websocket, setWebsocket] = useState([]);
     const state = store.getState();
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        return ()=>{
+            websocket.forEach((ws)=>{
+                ws.close();
+            })
+        }
+    },[])
     function showModal() {
         setIsModalOpen(true);
     }
@@ -61,8 +68,9 @@ export function BookMain({index}) {
             items: orderItem
         }
         console.log("newOrder", newOrder)
-        await postOrder(newOrder);
-        message.success("下单成功");
+        const ws = await postOrder(newOrder);
+        setWebsocket([...websocket, ws]);
+        //message.success("下单成功");
         setIsModalOpen(false);
         //navigate("/home");
     }

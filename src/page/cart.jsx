@@ -14,6 +14,7 @@ export default function Cart() {
     const [receiver, setReceiver] = useState(null);
     const [telephone, setTelephone] = useState(null);
     const [address, setAddress] = useState(null);
+    const [websocket, setWebsocket] = useState([]);
 
     async function getCart() {
         const cartList = await PrivateFetch(`cart`, "GET");
@@ -24,7 +25,7 @@ export default function Cart() {
         setIsModalOpen(true);
     }
 
-    function handlePurchase(e) {
+    async function handlePurchase(e) {
         e.stopPropagation();
         e.preventDefault();
         if (!receiver) {
@@ -47,13 +48,14 @@ export default function Cart() {
                 receiver: receiver,
                 items: newOrderItem
             }
-            postOrder(newOrder);
+            const ws = await postOrder(newOrder);
+            setWebsocket([...websocket, ws]);
         } catch (error) {
             message.error("添加失败");
         }
 
         setCartItems(cartItems.filter((item) => !item.selected));
-        message.success("下单成功");
+        //message.success("下单成功");
         setIsModalOpen(false);
     }
 
@@ -71,6 +73,11 @@ export default function Cart() {
 
     useEffect(() => {
         getCart();
+        return ()=>{
+            websocket.forEach((ws)=>{
+                ws.close();
+            });
+        }
     }, []);
 
     if (cartItems != null) {

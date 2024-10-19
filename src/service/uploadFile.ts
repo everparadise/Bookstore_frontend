@@ -10,6 +10,7 @@ export async function uploadFile(pic: any, setUrl: any, url: string) {
         message.success("图像上传成功");
         console.log(backendUrl);
         setUrl(backendUrl);
+        return backendUrl;
     } catch (e) {
         message.error("上传图像失败");
         setUrl(url);

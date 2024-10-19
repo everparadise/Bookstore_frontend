@@ -54,6 +54,7 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
 
     async function handleUpload(event) {
         event.stopPropagation();
+        event.preventDefault();
         if (!event.target.files) {
             return;
         }

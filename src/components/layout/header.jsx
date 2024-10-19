@@ -6,6 +6,7 @@ import {faKey, faMoneyBill1, faRightFromBracket, faUser} from "@fortawesome/free
 import {useEffect, useState} from "react";
 import {PrivateFetch} from "../../service/PrivateFetch";
 import {logoutUser, store} from "../../util/store";
+import {logout} from "../../service/login";
 
 export default function Navbar() {
     const navigate = useNavigate();
@@ -28,6 +29,7 @@ export default function Navbar() {
     function onClick(value) {
         console.log("key", value);
         if (value.key === "logOut") {
+            logout();
             store.dispatch(logoutUser());
             navigate("/");
         }

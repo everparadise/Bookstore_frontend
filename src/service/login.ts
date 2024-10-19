@@ -1,5 +1,5 @@
 import {PrivateFetch} from "./PrivateFetch";
-import {loginUser, store} from "../util/store";
+import {loginUser, logoutUser, store} from "../util/store";
 import {response} from "../types/response";
 import {message} from "antd";
 
@@ -34,4 +34,26 @@ export async function login(username: string, password: string): Promise<boolean
 
     return loginRequest(username, password);
 
+}
+
+export async function logout(){
+    function logoutCallBack(data: response) {
+        if (!data.valid) {
+            message.error("server internal error");
+        }
+
+        const duration = data.resource;
+        const hours = Math.floor((duration / (1000 * 60 * 60)));
+        const minutes = Math.floor((duration / (1000 * 60)) % 60);
+        const seconds = Math.round((duration / 1000) % 60);
+
+        store.dispatch(logoutUser());
+        message.success(`登录时长 ${hours}小时 ${minutes}分钟 ${seconds}秒`);
+    }
+
+    const loginRequest = async (): Promise<boolean> => {
+        return await PrivateFetch("auth/logout", "GET", null, null, logoutCallBack);
+    }
+
+    return loginRequest();
 }

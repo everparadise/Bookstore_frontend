@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCloudArrowUp, faMagnifyingGlass, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useRef, useState} from "react";
 import {uploadFile} from "../../service/uploadFile";
+import {PrivateFetch} from "../../service/PrivateFetch";
 
 export function Avatar({user}) {
     const inputRef = useRef(null);
@@ -41,7 +42,10 @@ export function Avatar({user}) {
             return;
         }
 
-        await uploadFile(pic, setUrl, url);
+        const backendUrl = await uploadFile(pic, setUrl, url);
+        user.avatar = backendUrl;
+        await PrivateFetch("user", "PUT", null, user);
+
 
         setSelect(false);
         setPic(null);
