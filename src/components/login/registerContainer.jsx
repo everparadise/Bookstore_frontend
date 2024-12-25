@@ -36,7 +36,10 @@ export function RegisterContainer() {
                 email
             }, registerCallback);
             if (user != null) {
-                store.dispatch(loginUser(user));
+                store.dispatch(loginUser(user, "USER"));
+                message.success({
+                    content: "注册成功"
+                });
                 navigate("/home");
             }
         }
