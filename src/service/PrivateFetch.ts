@@ -20,7 +20,6 @@ export async function PrivateFetch(endpoint: string, method: string, options: an
         method: method || "GET",
         credentials: "include",
         headers: {
-            "Content-Type": "application/json"
         }
     };
     if (body && method !== "GET") {
@@ -31,6 +30,9 @@ export async function PrivateFetch(endpoint: string, method: string, options: an
             defaultOptions.headers['credentials'] = "include"
             defaultOptions.body = JSON.stringify(body);
         }
+    }
+    else {
+        defaultOptions.headers['Content-Type'] = "application/json"
     }
     if (token) {
         defaultOptions.headers['Authorization'] = `Bearer ${token}`;

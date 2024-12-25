@@ -1,11 +1,11 @@
 import {Link} from "react-router-dom";
 import "../../css/bookListContainer.css"
-import {Pagination} from "antd";
+import {message, Pagination} from "antd";
 import Search from "antd/es/input/Search";
 
 import {useEffect, useState} from "react";
 import {PrivateFetch} from "../../service/PrivateFetch";
-import {PAGE_SIZE} from "../../constant/constant";
+import {IMAGE_PREFIX, PAGE_SIZE} from "../../constant/constant";
 
 export default function BookListContainer() {
     const [page, setPage] = useState(1);
@@ -15,11 +15,43 @@ export default function BookListContainer() {
     let bookcards = null;
 
     async function getBooks(page, value) {
-        const pageRequest = {
-            "value": value,
-            "page": page - 1
+        let pageRequest;
+        let bookPage;
+        if(value.startsWith("Tag:")){
+            pageRequest = {
+                "value": value.substring(5),
+                "page": page - 1,
+            }
+            bookPage = await PrivateFetch(`book/tags`, "POST", null, pageRequest);
+            if(bookPage.content.length === 0){
+                message.error("未找到与目标标签相关的书籍或此页为空");
+                setBookList(null);
+                setTotalElements(0);
+                return;
+            }
+            message.success("已为您找到与目标标签相关的书籍");
         }
-        const bookPage = await PrivateFetch(`book/books`, "POST", null, pageRequest);
+        else if(value.startsWith("BookName: ")){
+            // graphql
+            let query = `{getBookByName(name: "${value.substring(10)}") { bid name pic price }}`
+
+            function callback(data){
+                return data.data.getBookByName;
+            }
+            const book = await PrivateFetch(`graphql`, "POST", null, {query: query}, callback);
+            bookPage = {
+                content: [book],
+                totalElements: 1
+            }
+        }
+        else{
+            pageRequest = {
+                "value": value,
+                "page": page - 1
+            }
+            bookPage = await PrivateFetch(`book/books`, "POST", null, pageRequest);
+        }
+
         setTotalElements(bookPage.totalElements);
         setBookList(bookPage.content);
     }
@@ -55,7 +87,7 @@ function BookCards({book}) {
         <div className="bookcardsLink">
 
             <div className="picsContainer">
-                <Link to={`/book/${book.bid}`}><img className="bookPic" src={book.pic} alt={book.name}/></Link>
+                <Link to={`/book/${book.bid}`}><img className="bookPic" src={IMAGE_PREFIX + book.pic} alt={book.name}/></Link>
             </div>
             <div className="bookName">{book.name}</div>
 

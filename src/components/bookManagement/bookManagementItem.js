@@ -103,7 +103,7 @@ export function BookManagementHeader({totalElements, setTotalElements, handleCha
             </div>
             {open &&
                 <BookModalManager newBook={true} openState={{open, setOpen}} submitCallBack={submitCallBack}
-                                  handleUpload={handleSubmit} handleSubmit={handleSubmit}>
+                                  handleSubmit={handleSubmit}>
 
                 </BookModalManager>}
         </>

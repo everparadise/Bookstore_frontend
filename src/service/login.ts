@@ -38,11 +38,14 @@ export async function login(username: string, password: string): Promise<boolean
 
 export async function logout(){
     function logoutCallBack(data: response) {
+        // console.log(data)
+        // console.log(data.valid)
         if (!data.valid) {
             message.error("server internal error");
         }
 
         const duration = data.resource;
+        console.log("duration", duration)
         const hours = Math.floor((duration / (1000 * 60 * 60)));
         const minutes = Math.floor((duration / (1000 * 60)) % 60);
         const seconds = Math.round((duration / 1000) % 60);
