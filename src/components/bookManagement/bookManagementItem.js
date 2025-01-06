@@ -86,7 +86,8 @@ export function BookManagementHeader({totalElements, setTotalElements, handleCha
             "author": book.author,
             "isbn": book.isbn,
             "stock": book.stock,
-            "comment": book.comment
+            "comment": book.comment,
+            "tag": book.tag
         });
     }
 

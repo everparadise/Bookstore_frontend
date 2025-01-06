@@ -11,7 +11,7 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
     const [author, setAuthor] = useState(book ? book.author : "");
 
     const [pic, setPic] = useState(book ? book.pic : "");
-
+    const [tag, setTag] = useState(book ? book.tag : "");
     const [isbn, setIsbn] = useState(book ? book.isbn : "");
     const [stock, setStock] = useState(book ? book.stock : "");
     const [price, setPrice] = useState(book ? book.price : 0);
@@ -25,7 +25,7 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
             message.error("请上传图片");
             return;
         }
-
+        console.log("submit tag", tag);
         const result = await handleSubmit({
             "bid": newBook ? null : book.bid,
             "pic": pic,
@@ -35,7 +35,8 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
             "author": author,
             "isbn": isbn,
             "stock": stock,
-            "comment": comment
+            "comment": comment,
+            "tag": tag
         })
         console.log(result);
         const UploadResult = await uploadFile(realFile, setPic, pic, result.bid);
@@ -118,6 +119,7 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
 
                 <ModalText value={isbn} title={"ISBN"} placeHolder={"请输入ISBN"} setValue={setIsbn}/>
                 <ModalText value={stock} title={"图书余量"} placeHolder={"请输入余量"} setValue={setStock}/>
+                <ModalText value={tag} title={"标签"} placeHolder={"请输入标签"} setValue={setTag}/>
 
                 <>
                     <p className="modalTitle">{"请输入图书价格"}</p>
@@ -174,7 +176,7 @@ export function InputAndButton({handleUpload}) {
                 "cursor": "pointer"
             }}>
                         <FontAwesomeIcon icon={faCloudArrowUp}/>
-                        <button className="upload-button">Upload</button>
+                        <button className="upload-button" onClick={(e)=>{e.preventDefault();}}>Upload</button>
             </span>
         </>
     )

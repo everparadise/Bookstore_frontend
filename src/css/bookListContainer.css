@@ -29,6 +29,7 @@
 
 .bookPic {
     max-width: 100%;
+    max-height: 160px;
 }
 
 .bookName {
@@ -76,6 +77,7 @@
 }
 
 .picsContainer {
-    margin: 5px;
     height: 160px;
+    text-align: center;
+    margin: 5px auto;
 }

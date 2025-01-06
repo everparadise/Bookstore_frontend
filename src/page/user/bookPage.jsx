@@ -147,7 +147,7 @@ function BookGrid({book, showModal}) {
                         <Key text="定价: "></Key><Val text={book.price / 100}></Val>
                     </SpacerLine>
                     <SpacerLine>
-                        <Key text="状态: "></Key><Val text={book.name}></Val>
+                        <Key text="标签: "></Key><Val text={book.tag}></Val>
                     </SpacerLine>
                     <Key text="作品简介: "></Key>
                     <div className="comment"><p className="commentFont">{book.comment}</p></div>
