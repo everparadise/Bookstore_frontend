@@ -3,6 +3,7 @@ import "../../css/order.css"
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {IMAGE_PREFIX} from "../../constant/constant";
 
 export function OrderItem({item}) {
     const [detail, setDetail] = useState(false);
@@ -43,7 +44,7 @@ export function Detail({item}) {
     return (
         <div className="cartDetail">
             <span className="detailPicContainer">
-                 <img className="detailPic" src={item.pic} alt={item.name}/>
+                 <img className="detailPic" src={IMAGE_PREFIX + item.pic} alt={item.name}/>
             </span>
             <p className="listHeader orderSpacer">书名: {item.name}</p>
             <p className="orderItemFont">数目: {item.number}</p>

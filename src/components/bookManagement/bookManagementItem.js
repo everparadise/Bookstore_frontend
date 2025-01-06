@@ -86,7 +86,8 @@ export function BookManagementHeader({totalElements, setTotalElements, handleCha
             "author": book.author,
             "isbn": book.isbn,
             "stock": book.stock,
-            "comment": book.comment
+            "comment": book.comment,
+            "tag": book.tag
         });
     }
 
@@ -103,7 +104,7 @@ export function BookManagementHeader({totalElements, setTotalElements, handleCha
             </div>
             {open &&
                 <BookModalManager newBook={true} openState={{open, setOpen}} submitCallBack={submitCallBack}
-                                  handleUpload={handleSubmit} handleSubmit={handleSubmit}>
+                                  handleSubmit={handleSubmit}>
 
                 </BookModalManager>}
         </>

@@ -37,19 +37,19 @@ export function Avatar({user}) {
     }
 
     async function handleUpload() {
-        if (!select) {
-            message.error("未选择图像")
-            return;
-        }
-
-        const backendUrl = await uploadFile(pic, setUrl, url);
-        user.avatar = backendUrl;
-        await PrivateFetch("user", "PUT", null, user);
-
-
-        setSelect(false);
-        setPic(null);
-        inputRef.current.value = null;
+        // if (!select) {
+        //     message.error("未选择图像")
+        //     return;
+        // }
+        //
+        // const backendUrl = await uploadFile(pic, setUrl, url);
+        // user.avatar = backendUrl;
+        // await PrivateFetch("user", "PUT", null, user);
+        //
+        //
+        // setSelect(false);
+        // setPic(null);
+        // inputRef.current.value = null;
     }
 
     return (

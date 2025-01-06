@@ -7,5 +7,5 @@ export function registerCallback(response: any) {
     } else if (response.resource === "email") {
         message.warning("邮箱格式不正确");
     }
-    return null;
+    return response.resource;
 }

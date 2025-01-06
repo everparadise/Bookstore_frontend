@@ -1,24 +1,31 @@
-import {InputNumber, Modal} from "antd";
+import {InputNumber, message, Modal} from "antd";
 import {useRef, useState} from "react";
 import {uploadFile} from "../../service/uploadFile";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCloudArrowUp} from "@fortawesome/free-solid-svg-icons";
+import {PrivateFetch} from "../../service/PrivateFetch";
+import {IMAGE_PREFIX} from "../../constant/constant";
 
 export function BookModalManager({openState, book, newBook, submitCallBack, handleSubmit}) {
     const [name, setName] = useState(book ? book.name : "");
     const [author, setAuthor] = useState(book ? book.author : "");
 
     const [pic, setPic] = useState(book ? book.pic : "");
-
+    const [tag, setTag] = useState(book ? book.tag : "");
     const [isbn, setIsbn] = useState(book ? book.isbn : "");
     const [stock, setStock] = useState(book ? book.stock : "");
     const [price, setPrice] = useState(book ? book.price : 0);
     const [comment, setComment] = useState(book ? book.comment : "");
+    const [realFile, setRealFile] = useState(null);
 
     async function onSubmit(e) {
         e.preventDefault();
         e.stopPropagation();
-
+        if(!realFile){
+            message.error("请上传图片");
+            return;
+        }
+        console.log("submit tag", tag);
         const result = await handleSubmit({
             "bid": newBook ? null : book.bid,
             "pic": pic,
@@ -28,11 +35,18 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
             "author": author,
             "isbn": isbn,
             "stock": stock,
-            "comment": comment
+            "comment": comment,
+            "tag": tag
         })
+        console.log(result);
+        const UploadResult = await uploadFile(realFile, setPic, pic, result.bid);
+        const parts = UploadResult.split('/');
 
-        console.log("result", result);
-        if (result) {
+        const filename = parts[parts.length - 1];
+        console.log("filename", filename)
+
+        const setPicResult = await PrivateFetch(`book/pic/${filename}/${result.bid}`, "PUT", null);
+        if (setPicResult) {
             //setBook(result);
             submitCallBack("success")
             openState.setOpen(false);
@@ -52,13 +66,44 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
         openState.setOpen(false);
     }
 
+    // async function handleUpload(event) {
+    //     event.stopPropagation();
+    //     event.preventDefault();
+    //     if (!event.target.files) {
+    //         return;
+    //     }
+    //     await uploadFile(event.target.files[0], setPic, pic);
+    //     event.target.value = null;
+    // }
+
     async function handleUpload(event) {
         event.stopPropagation();
         event.preventDefault();
-        if (!event.target.files) {
+        console.log("preview");
+        const file = event.target.files[0]; // 获取选中的文件
+        if (!file) {
             return;
         }
-        await uploadFile(event.target.files[0], setPic, pic);
+        console.log("preview next")
+        setRealFile(file);
+        // 创建 FileReader 对象
+        const reader = new FileReader();
+
+        // 设置读取成功后的回调
+        reader.onload = function (e) {
+            // 获取 Base64 数据
+            console.log("preview onload")
+            const imageData = e.target.result;
+
+            // 设置预览图像
+            const previewImage = document.getElementById("previewImage");
+            previewImage.src = imageData; // 将 Base64 数据设置为 img 的 src
+        };
+
+        // 读取文件为 Data URL（Base64 格式）
+        reader.readAsDataURL(file);
+
+        // 清空文件输入框的值，允许上传相同文件
         event.target.value = null;
     }
 
@@ -69,11 +114,12 @@ export function BookModalManager({openState, book, newBook, submitCallBack, hand
                 <ModalText value={author} title={"作者"} placeHolder={"请输入作者"} setValue={setAuthor}/>
 
                 <p className="modalTitle">封面</p>
-                <img src={pic} className="modalPic" alt={pic}/>
+                <img src={IMAGE_PREFIX + pic} className="modalPic" alt={pic} id={"previewImage"}/>
                 <InputAndButton handleUpload={handleUpload}/>
 
                 <ModalText value={isbn} title={"ISBN"} placeHolder={"请输入ISBN"} setValue={setIsbn}/>
                 <ModalText value={stock} title={"图书余量"} placeHolder={"请输入余量"} setValue={setStock}/>
+                <ModalText value={tag} title={"标签"} placeHolder={"请输入标签"} setValue={setTag}/>
 
                 <>
                     <p className="modalTitle">{"请输入图书价格"}</p>
@@ -130,8 +176,8 @@ export function InputAndButton({handleUpload}) {
                 "cursor": "pointer"
             }}>
                         <FontAwesomeIcon icon={faCloudArrowUp}/>
-                        <button className="upload-button">Upload</button>
-                </span>
+                        <button className="upload-button" onClick={(e)=>{e.preventDefault();}}>Upload</button>
+            </span>
         </>
     )
 

@@ -8,7 +8,8 @@ import {PrivateFetch} from "../service/PrivateFetch";
 import {CartItemToOrderItem} from "../service/CartItemToOrderItem";
 
 export default function Cart() {
-    let totalPrice = 0;
+    //let totalPrice = 0;
+    const [totalPrice, setTotalPrice] = useState(0);
     const [cartItems, setCartItems] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [receiver, setReceiver] = useState(null);
@@ -73,19 +74,86 @@ export default function Cart() {
 
     useEffect(() => {
         getCart();
-        return ()=>{
-            websocket.forEach((ws)=>{
+        return () => {
+            websocket.forEach((ws) => {
                 ws.close();
             });
         }
     }, []);
 
-    if (cartItems != null) {
-        console.log(cartItems);
-        cartItems.forEach((item) => {
-            if (item.selected) totalPrice += item.price * item.number;
-        })
-    }
+
+            async function handleSelect() {
+                let calculator = 0;
+                console.log("calculatePrice")
+                console.log("cartItems:", cartItems, "Type:", typeof cartItems);
+                const selectedItems = cartItems
+                    .filter(item => item.selected)
+                    .map(item => [item.price, item.number]); // 将每个商品变成一个数组 [price, quantity]
+
+                if (selectedItems.length > 0) {
+                    // 发送一个包含所有选中商品的数组的请求
+                    const response = await fetch("http://localhost:8083/calculatePrice", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(selectedItems), // 发送多个商品信息
+                    });
+
+                    // 检查响应
+                    if (!response.ok) {
+                        console.error("Network response was not ok");
+                        return;
+                    }
+
+                    // 解析响应数据
+                    const totalPrices = await response.json();
+                    console.log("Total Prices from Response:", totalPrices);
+
+                    // 计算总价
+                    calculator = totalPrices.reduce((acc, price) => acc + price, 0);
+                    console.log("Calculated Total Price:", calculator);
+                    setTotalPrice(calculator);
+                } else {
+                    console.log("No items selected");
+                }
+            }
+    //}
+    // if (cartItems != null) {
+    //     //let price = 0;
+    //     console.log(cartItems);
+    //     cartItems.forEach((item) => {
+    //         if (item.selected) totalPrice += item.price * item.number;
+    //     })
+    // setTotalPrice(price);
+    //}
+    // useEffect(() => {
+    //     async function calculatePrice() {
+    //         console.log("calculatePrice")
+    //         let price = 0
+    //         console.log("cartItems:", cartItems, "Type:", typeof cartItems);
+    //
+    //         for (let i = 0; i < cartItems.length; i++) {
+    //             console.log("cartItems[i]:", cartItems[i])
+    //             const item = cartItems[i];
+    //             if (item.selected){
+    //                 const response = await fetch("http://localhost:8083/calculatePrice", {
+    //                     method: "POST",
+    //                     headers: {
+    //                         "Content-Type": "application/json",
+    //                     },
+    //                     body: JSON.stringify([item.price, item.number]), // 发送 [[1, 2]] 作为请求体
+    //                 });
+    //                 console.log("response",response.json());
+    //                 price+= await response.json();
+    //             }
+    //         }
+    //         setTotalPrice(price);
+    //     }
+    //     if(cartItems)
+    //     calculatePrice();
+    // }, [cartItems]);
+
     const [check, setCheck] = useState(true);
     return (
         <>
@@ -98,7 +166,7 @@ export default function Cart() {
                               locale={{emptyText: <PrivateEmpty/>}}
                               renderItem={(item, index) => {
                                   return <CartListItem item={item} state={{check, setCheck}}
-                                                       handleDelete={handleDelete}></CartListItem>
+                                                       handleDelete={handleDelete} handleSelect={handleSelect}></CartListItem>
                               }}
                         ></List> : null}
                 </div>

@@ -10,6 +10,7 @@ import {store} from "../../util/store";
 import {useEffect, useState} from "react";
 import {postOrder} from "../../service/postOrder";
 import {PrivateFetch} from "../../service/PrivateFetch";
+import {IMAGE_PREFIX} from "../../constant/constant";
 
 export function BookPage() {
     const index = useParams();
@@ -131,7 +132,7 @@ function BookGrid({book, showModal}) {
 
             <div className="grid1">
                 <div className="bookPicContainer">
-                    <Image src={book.pic}/>
+                    <Image src={IMAGE_PREFIX + book.pic}/>
 
                 </div>
                 <div className="bookComment">
@@ -146,7 +147,7 @@ function BookGrid({book, showModal}) {
                         <Key text="定价: "></Key><Val text={book.price / 100}></Val>
                     </SpacerLine>
                     <SpacerLine>
-                        <Key text="状态: "></Key><Val text={book.name}></Val>
+                        <Key text="标签: "></Key><Val text={book.tag}></Val>
                     </SpacerLine>
                     <Key text="作品简介: "></Key>
                     <div className="comment"><p className="commentFont">{book.comment}</p></div>

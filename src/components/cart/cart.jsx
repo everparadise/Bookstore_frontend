@@ -4,8 +4,9 @@ import "../../css/cart.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
+import {IMAGE_PREFIX} from "../../constant/constant";
 
-export function CartListItem({item, state, handleDelete}) {
+export function CartListItem({item, state, handleDelete, handleSelect}) {
     //参数item 是cartBook类型对象
     const [detail, setDetail] = useState(false);
 
@@ -19,6 +20,7 @@ export function CartListItem({item, state, handleDelete}) {
                 <button className="detailSpan" onClick={handleDetail}><FontAwesomeIcon icon={faPlus}/></button>
                 <Checkbox checked={item.selected} onChange={(e) => {
                     item.selected = e.target.checked;
+                    handleSelect();
                     state.setCheck(!state.check);
                 }}/>
                 <Link to={`/book/${item.bid}`} className="namelink">{item.name}</Link>
@@ -27,6 +29,7 @@ export function CartListItem({item, state, handleDelete}) {
                     margin: 'auto 0'
                 }} min={1} max={100} defaultValue={item.number} onChange={(value) => {
                     item.number = value;
+                    handleSelect();
                     state.setCheck(!state.check);
                 }}/>
                 <span> {item.number * item.price / 100}</span>
@@ -61,7 +64,7 @@ export function BookListDetail({item}) {
     return (
         <div className="cartDetail">
             <span className="detailPicContainer">
-                 <img className="detailPic" src={item.pic} alt={item.name}/>
+                 <img className="detailPic" src={IMAGE_PREFIX + item.pic} alt={item.name}/>
             </span>
             <p>{item.comment}</p>
         </div>

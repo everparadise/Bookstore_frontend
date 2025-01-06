@@ -10,7 +10,7 @@ export function BookManagementList({page,setPage, value, setTotalElements, total
     async function getBooks(page, value) {
         const pageRequest = {
             "value": value,
-            "page": page - 1
+            "page": page - 1 >= 0 ? page - 1 : 0
         }
         const bookPage = await PrivateFetch(`book/books`, "POST", null, pageRequest);
         if(bookPage.content.length === 0){
